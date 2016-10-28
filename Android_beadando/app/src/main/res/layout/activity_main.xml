@@ -26,5 +26,17 @@
         android:layout_alignLeft="@+id/LightOn"
         android:layout_alignStart="@+id/LightOn"/>
 
+    <SeekBar
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:max="100"
+        android:progress="1"
+        android:layout_below="@+id/StrobeOn"
+        android:layout_alignStart="@+id/StrobeOn"
+        android:layout_marginTop="29dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/seekBar" />
+
 
 </RelativeLayout>
