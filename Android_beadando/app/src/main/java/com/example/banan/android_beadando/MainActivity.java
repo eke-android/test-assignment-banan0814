@@ -2,6 +2,7 @@ package com.example.banan.android_beadando;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.media.MediaPlayer;
@@ -11,11 +12,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.Toast;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import java.util.TimerTask;
+
+import static android.widget.CompoundButton.*;
+import static com.example.banan.android_beadando.R.id.checkBox;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     Button lightOnButton;
     Button strobeOnButton;
     SeekBar strobeSpeedbar;
+    CheckBox enableScroll = (CheckBox)findViewById(checkBox);
+    Switch NightMode;
+    RelativeLayout rl;
 
     private CameraManager mCameraManager;
     private String mCameraId;
@@ -53,6 +64,29 @@ public class MainActivity extends AppCompatActivity {
         lightOnButton.setOnClickListener(lightOnClick);
         strobeOnButton.setOnClickListener(strobeOnClick);
         strobeSpeedbar = (SeekBar)findViewById(R.id.seekBar);
+        NightMode = (Switch)findViewById(R.id.switch1);
+        rl = (RelativeLayout)findViewById(R.id.activity_main);
+        NightMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                rl.setBackgroundColor(Color.BLACK);
+            }
+        });
+        enableScroll.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // TODO Auto-generated method stub
+
+                if (enableScroll.isChecked()) {
+                    strobeSpeedbar.setEnabled(true);
+                }
+                else {
+                    strobeSpeedbar.setEnabled(false);
+                }
+
+            }
+        });
+
         strobeSpeedbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(
 
         ) {
@@ -73,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
         private View.OnClickListener lightOnClick = new View.OnClickListener(){
         @Override

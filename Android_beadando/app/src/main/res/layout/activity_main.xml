@@ -34,9 +34,28 @@
         android:progress="1"
         android:layout_below="@+id/StrobeOn"
         android:layout_alignStart="@+id/StrobeOn"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/seekBar" />
+
+    <CheckBox
+        android:text="Enable Scrollbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seekBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:hint="Enable Scroll"
+        android:id="@+id/checkBox" />
+
+    <Switch
+        android:text="Night Mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/switch1" />
 
 
 </RelativeLayout>
